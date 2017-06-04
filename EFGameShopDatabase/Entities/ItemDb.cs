@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
+using EFGameShopDatabase.Models;
 
 namespace EFGameShopDatabase.Entities
 {
-    public partial class Items
+    [Table("Items")]
+    public partial class ItemDb
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Items()
+        public ItemDb()
         {
             OrderEntries = new HashSet<OrderEntries>();
         }
@@ -45,5 +47,21 @@ namespace EFGameShopDatabase.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderEntries> OrderEntries { get; set; }
+
+        public Item Map()
+        {
+            return new Item()
+            {
+                item_id = this.item_id,
+                available_quantity = this.available_quantity,
+                description = this.description,
+                loyality_points = this.loyality_points,
+                name = this.name,
+                price = this.price,
+                tax_rate = this.tax_rate,
+                type = this.type,
+                unit = this.unit
+            };
+        }
     }
 }

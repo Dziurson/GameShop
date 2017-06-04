@@ -20,7 +20,7 @@ namespace EFGameShopDatabase.Entities
 
         public int? quantity { get; set; }
 
-        public virtual Items Items { get; set; }
+        public virtual ItemDb Items { get; set; }
 
         public virtual Orders Orders { get; set; }
     }
