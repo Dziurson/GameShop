@@ -15,9 +15,9 @@ namespace EFGameShopDatabase
         }
 
         public virtual DbSet<ItemDb> Items { get; set; }
-        public virtual DbSet<OrderEntries> OrderEntries { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<OrderEntryDb> OrderEntries { get; set; }
+        public virtual DbSet<OrderDb> Orders { get; set; }
+        public virtual DbSet<UserDb> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,12 +30,12 @@ namespace EFGameShopDatabase
                 .WithRequired(e => e.Items)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Orders>()
+            modelBuilder.Entity<OrderDb>()
                 .HasMany(e => e.OrderEntries)
                 .WithRequired(e => e.Orders)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Users>()
+            modelBuilder.Entity<UserDb>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.Users)
                 .WillCascadeOnDelete(false);            
