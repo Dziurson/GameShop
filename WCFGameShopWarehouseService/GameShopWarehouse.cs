@@ -16,28 +16,39 @@ namespace WCFGameShopWarehouseService
     
     public class GameShopWarehouse : IGameShopWarehouse
     {
-        MSSQLDatabase MSSQLdb;
         private static readonly ILog log = LogManager.GetLogger(typeof(GameShopWarehouse));
 
         GameShopWarehouse()
         {
             log4net.Config.XmlConfigurator.Configure();
-            MSSQLdb = new MSSQLDatabase();            
         }
         public IEnumerable<Item> GetAllItems() 
         {
             log.Info("All items requested".WithDate());
-            return MSSQLdb.GetAllItems();
+            using(var db = new GameShopDatabase())
+            {
+                return db.Items.ToList().Select(x => x.Map());
+            }
         }
 
-        public Item GetItemById(int itemid)
+        public Item GetItemById(int itemId)
         {
-            throw new NotImplementedException();
+            log.Info("Item requested".WithDate());
+            using (var db = new GameShopDatabase())
+            {
+                var item = db.Items.Where(x => x.ItemId == itemId).FirstOrDefault();
+                return item == null ? item.Map() : null;
+            }
         }
 
-        public IEnumerable<Item> GetItemsByType(ItemType itemtype)
+        public IEnumerable<Item> GetItemsByType(ItemType itemType)
         {
-            return MSSQLdb.GetItemByType(itemtype);
+            log.Info("Items by type requested".WithDate());
+            using (var db = new GameShopDatabase())
+            {
+                var typeStr = itemType.ToString();
+                return db.Items.Where(x => x.Type == typeStr).ToList().Select(x => x.Map());
+            }
         }
 
         public IEnumerable<Item> GetItemsWithNoQty()
@@ -47,7 +58,14 @@ namespace WCFGameShopWarehouseService
 
         public bool InsertNewItem(Item item)
         {
-            throw new NotImplementedException();
+            log.Info("Item insertion requested".WithDate());
+            using (var db = new GameShopDatabase())
+            {
+                // jak ma dzialac jak update, to trzeba zmodyfikowac
+                var itemDb = item.ReverseMap();
+                db.Items.Add(itemDb);
+                return db.SaveChanges() > 0;
+            }
         }
     }
 }
