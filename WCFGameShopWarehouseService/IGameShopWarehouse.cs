@@ -1,4 +1,5 @@
-﻿using EFGameShopDatabase.Models;
+﻿using EFGameShopDatabase.Enums;
+using EFGameShopDatabase.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,18 @@ namespace WCFGameShopWarehouseService
     public interface IGameShopWarehouse
     {
         [OperationContract]
-        Item[] GetAllItems();
+        IEnumerable<Item> GetAllItems();
+
+        [OperationContract]
+        IEnumerable<Item> GetItemsByType(ItemType itemtype);
+
+        [OperationContract]
+        IEnumerable<Item> GetItemsWithNoQty();
+
+        [OperationContract]
+        bool InsertNewItem(Item item);
+
+        [OperationContract]
+        Item GetItemById(int itemid);        
     }
 }
