@@ -6,12 +6,13 @@ using System.Data.Entity.Spatial;
 
 namespace EFGameShopDatabase.Entities
 {
-    public partial class Users
+    [Table("Users")]
+    public partial class UserDb
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public UserDb()
         {
-            Orders = new HashSet<Orders>();
+            Orders = new HashSet<OrderDb>();
         }
 
         [Key]
@@ -50,6 +51,6 @@ namespace EFGameShopDatabase.Entities
         public int? loyality_points { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<OrderDb> Orders { get; set; }
     }
 }

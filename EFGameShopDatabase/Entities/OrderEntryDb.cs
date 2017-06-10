@@ -6,7 +6,8 @@ using System.Data.Entity.Spatial;
 
 namespace EFGameShopDatabase.Entities
 {
-    public partial class OrderEntries
+    [Table("OrderEntries")]
+    public partial class OrderEntryDb
     {
         [Key]
         [Column(Order = 0)]
@@ -22,6 +23,6 @@ namespace EFGameShopDatabase.Entities
 
         public virtual ItemDb Items { get; set; }
 
-        public virtual Orders Orders { get; set; }
+        public virtual OrderDb Orders { get; set; }
     }
 }

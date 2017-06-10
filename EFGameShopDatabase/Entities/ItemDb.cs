@@ -13,7 +13,7 @@ namespace EFGameShopDatabase.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ItemDb()
         {
-            OrderEntries = new HashSet<OrderEntries>();
+            OrderEntries = new HashSet<OrderEntryDb>();
         }
 
         [Key]
@@ -46,7 +46,7 @@ namespace EFGameShopDatabase.Entities
         public int? loyality_points { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderEntries> OrderEntries { get; set; }
+        public virtual ICollection<OrderEntryDb> OrderEntries { get; set; }
 
         public Item Map()
         {
