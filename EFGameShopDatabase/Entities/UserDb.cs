@@ -1,3 +1,4 @@
+using EFGameShopDatabase.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,40 +18,58 @@ namespace EFGameShopDatabase.Entities
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int user_id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string login { get; set; }
+        public string Login { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [StringLength(50)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [StringLength(50)]
-        public string surname { get; set; }
+        public string Surname { get; set; }
 
         [StringLength(200)]
-        public string address { get; set; }
+        public string Address { get; set; }
 
         [StringLength(100)]
-        public string city { get; set; }
+        public string City { get; set; }
 
         [StringLength(20)]
-        public string postal_code { get; set; }
+        public string PostalCode { get; set; }
 
         [StringLength(20)]
-        public string phone { get; set; }
+        public string Phone { get; set; }
 
         [StringLength(50)]
-        public string mail { get; set; }
+        public string Mail { get; set; }
 
-        public int? loyality_points { get; set; }
+        public int? LoyalityPoints { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDb> Orders { get; set; }
+
+        public User Map()
+        {
+            return new User()
+            {
+                UserId = UserId,
+                Password = Password,
+                Name = Name,
+                Surname = Surname,
+                Address = Address,
+                City = City,
+                PostalCode = PostalCode,
+                Phone = Phone,
+                Mail = Mail,
+                LoyalityPoints = LoyalityPoints
+            };
+        }
+
     }
 }

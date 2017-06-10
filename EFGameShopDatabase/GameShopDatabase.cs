@@ -11,6 +11,7 @@ namespace EFGameShopDatabase
     public partial class GameShopDatabase : DbContext
     {
         public GameShopDatabase() : base("name=DbConnectionString")
+        //public GameShopDatabase() : base("name=localdb")
         {
         }
 
@@ -22,7 +23,7 @@ namespace EFGameShopDatabase
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ItemDb>()
-                .Property(e => e.price)
+                .Property(e => e.Price)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<ItemDb>()

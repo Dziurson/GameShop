@@ -9,29 +9,29 @@ namespace EFGameShopDatabase.Models
 {
     public class Item
     {
-        public int item_id { get; set; }
-        public string name { get; set; }
-        public decimal price { get; set; }
-        public double tax_rate { get; set; }
-        public string unit { get; set; }
-        public string type { get; set; }
-        public int available_quantity { get; set; }
-        public string description { get; set; }
-        public int? loyality_points { get; set; }
+        public int ItemId { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public double TaxRate { get; set; }
+        public string Unit { get; set; }
+        public string Type { get; set; }
+        public int AvailableQuantity { get; set; }
+        public string Description { get; set; }
+        public int? LoyalityPoints { get; set; }
 
         public ItemDb ReverseMap()
         {
             return new ItemDb()
             {
-                item_id = this.item_id,
-                available_quantity = this.available_quantity,
-                description = this.description,
-                loyality_points = this.loyality_points,
-                name = this.name,
-                price = this.price,
-                tax_rate = this.tax_rate,
-                type = this.type,
-                unit = this.unit
+                ItemId = this.ItemId,
+                AvailableQuantity = this.AvailableQuantity,
+                Description = this.Description,
+                LoyalPoints = this.LoyalityPoints,
+                Name = this.Name,
+                Price = this.Price,
+                TaxRate = this.TaxRate,
+                Type = this.Type,
+                Unit = this.Unit
             };
         }
     }

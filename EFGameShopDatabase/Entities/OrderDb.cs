@@ -1,3 +1,4 @@
+using EFGameShopDatabase.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,17 +18,28 @@ namespace EFGameShopDatabase.Entities
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int order_id { get; set; }
+        public int OrderId { get; set; }
 
-        public int user_id { get; set; }
+        public int UserId { get; set; }
 
-        public DateTime? delivery_date { get; set; }
+        public DateTime? DeliveryDate { get; set; }
 
-        public DateTime order_date { get; set; }
+        public DateTime OrderDate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderEntryDb> OrderEntries { get; set; }
 
         public virtual UserDb Users { get; set; }
+
+        public Order Map()
+        {
+            return new Order()
+            {
+                OrderId = OrderId,
+                UserId = UserId,
+                DeliveryDate = DeliveryDate,
+                OrderDate = OrderDate
+            };
+        }
     }
 }

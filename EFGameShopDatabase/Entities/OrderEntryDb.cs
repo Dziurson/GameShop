@@ -1,3 +1,4 @@
+using EFGameShopDatabase.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,17 +13,27 @@ namespace EFGameShopDatabase.Entities
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int order_id { get; set; }
+        public int OrderId { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int item_id { get; set; }
+        public int ItemId { get; set; }
 
-        public int? quantity { get; set; }
+        public int? Quantity { get; set; }
 
         public virtual ItemDb Items { get; set; }
 
         public virtual OrderDb Orders { get; set; }
+
+        public OrderEntry Map()
+        {
+            return new OrderEntry()
+            {
+                OrderId = OrderId,
+                ItemId = ItemId,
+                Quantity = Quantity
+            };
+        }
     }
 }

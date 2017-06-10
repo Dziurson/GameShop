@@ -47,7 +47,7 @@ namespace EFGameShopDatabase
             try
             {
                 string typestr = itemtype.Map();
-                IEnumerable<Item> result = MSSQLdb.Items.Where(item => item.type == typestr).ToList().Select(item => item.Map());
+                IEnumerable<Item> result = MSSQLdb.Items.Where(item => item.Type == typestr).ToList().Select(item => item.Map());
                 log.Info(DateTime.Now + "Database Items extraction completed.");
                 return result;
             }

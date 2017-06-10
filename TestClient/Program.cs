@@ -15,7 +15,7 @@ namespace TestClient
             GameShopWarehouseClient client = new GameShopWarehouseClient();
             foreach (Item item in client.GetAllItems())
             {
-                Console.WriteLine(item.name + " " + item.description);
+                Console.WriteLine(item.Name + " " + item.Description);
             }
             Console.ReadLine();
             Console.ReadLine();
