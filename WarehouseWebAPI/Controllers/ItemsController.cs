@@ -31,7 +31,7 @@ namespace WarehouseWebAPI.Controllers
         }
 
         // POST: api/Items
-        public HttpResponseMessage Post(Item item)
+        public HttpResponseMessage Post([FromBody]Item item)
         {
             if (item != null)
             { 
@@ -46,8 +46,6 @@ namespace WarehouseWebAPI.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-
-
         }
 
         // PUT: api/Items/5
