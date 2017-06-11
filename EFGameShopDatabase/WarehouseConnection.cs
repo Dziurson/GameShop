@@ -12,8 +12,14 @@ namespace EFGameShopDatabase
 {
     public class WarehouseConnection : IDisposable
     {
+        #region local_fields
+
         private GameShopDatabase MSSQLdb;
         private static readonly ILog log = LogManager.GetLogger(typeof(WarehouseConnection));
+
+        #endregion
+
+        #region constructors
 
         public WarehouseConnection()
         {            
@@ -27,32 +33,58 @@ namespace EFGameShopDatabase
             }
         }
 
+        #endregion
+
+        #region private_methods
+
+        private bool Commit()
+        {
+            try
+            {
+                log.Info("Saving changes to database - started".WithDate());
+                MSSQLdb.SaveChanges();
+                log.Info("Saving changes to database - completed".WithDate());
+                return true;
+            }
+            catch (Exception e)
+            {
+                log.Error("Saving changes to database - failed".WithDate());
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region public_methods
+
         public IEnumerable<Item> GetAllItems()
         {
             try
             {
+                log.Info("Database Items extraction started".WithDate());
                 IEnumerable<Item> result = MSSQLdb.Items.ToList().Select(item => item.Map());
-                log.Info(DateTime.Now + "Database Items extraction completed.");
+                log.Info("Database Items extraction completed".WithDate());
                 return result;
             }
             catch
             {
-                log.Error("Database Items extraction failed.");
+                log.Error("Database Items extraction failed".WithDate());
                 return null;
             }            
         }
         public IEnumerable<Item> GetItemByType(ItemType itemtype)
-        {            
+        {
+            string typestr = itemtype.Map();
             try
-            {
-                string typestr = itemtype.Map();
+            {          
+                log.Info(String.Concat("Database Items with type: ", typestr, " extraction started").WithDate());
                 IEnumerable<Item> result = MSSQLdb.Items.Where(item => item.Type == typestr).ToList().Select(item => item.Map());
-                log.Info(DateTime.Now + "Database Items extraction completed.");
+                log.Info(String.Concat("Database Items with type: ", typestr, " extraction completed").WithDate());
                 return result;
             }
             catch
             {
-                log.Error("Database Items extraction failed.");
+                log.Error(String.Concat("Database Items with type: ", typestr, " extraction failed").WithDate());
                 return null;
             }
         } 
@@ -60,13 +92,14 @@ namespace EFGameShopDatabase
         {
             try
             {
+                log.Info(String.Concat("Database Item with id: ", id, " extraction started").WithDate());
                 Item result = MSSQLdb.Items.Where(item => item.ItemId == id).ToList().Select(item => item.Map()).FirstOrDefault();
-                log.Info(DateTime.Now + "Database Item extraction completed.");
+                log.Info(String.Concat("Database Item with type: ", id, " extraction completed").WithDate());
                 return result;
             }
             catch
             {
-                log.Error("Database Item extraction failed.");
+                log.Error(String.Concat("Database Item with type: ", id, " extraction failed").WithDate());
                 return null;
             }
         }
@@ -74,13 +107,14 @@ namespace EFGameShopDatabase
         {
             try
             {
+                log.Info("Database Items with 0 quantity extraction started".WithDate());
                 IEnumerable<Item> result = MSSQLdb.Items.Where(item => item.AvailableQuantity == 0).ToList().Select(item => item.Map());
-                log.Info(DateTime.Now + "Database Items extraction completed.");
+                log.Info("Database Items with 0 quantity extraction completed".WithDate());
                 return result;
             }
             catch
             {
-                log.Error("Database Items extraction failed.");
+                log.Error("Database Items with 0 quantity extraction failed".WithDate());
                 return null;
             }
         }
@@ -97,22 +131,11 @@ namespace EFGameShopDatabase
             }
             return Commit();
         }
-        private bool Commit()
-        {
-            try
-            {
-                MSSQLdb.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                
-                return false;
-            }
-        }
         public void Dispose()
         {
             MSSQLdb.Dispose();
         }
+
+        #endregion       
     }
 }
