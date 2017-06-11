@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using EFGameShopDatabase;
-using EFGameShopDatabase.Models;
+using WarehouseWebAPI.Models;
 
 namespace WarehouseWebAPI.Controllers
 {
@@ -16,7 +16,8 @@ namespace WarehouseWebAPI.Controllers
         {
             using (WarehouseConnection db = new WarehouseConnection())
             {
-                return db.GetAllItems();
+                var items = Item.Map(db.GetAllItems());
+                return items;
             }              
         }
 
@@ -25,16 +26,17 @@ namespace WarehouseWebAPI.Controllers
         {
             using (WarehouseConnection db = new WarehouseConnection())
             {
-                return db.GetItemById(id);
+                return Item.Map(db.GetItemById(id));
             }
         }
 
         // POST: api/Items
         public void Post(Item item)
         {
+            if (item!=null)
             using (WarehouseConnection db = new WarehouseConnection())
-            {
-                db.InsertNewItem(item);
+            {                
+                db.InsertNewItem(item.ReverseMap());
             }
 
         }
@@ -42,12 +44,13 @@ namespace WarehouseWebAPI.Controllers
         // PUT: api/Items/5
         public void Put(int id, Item item)
         {
+            if (item!=null)
             using (WarehouseConnection db = new WarehouseConnection())
             {
                 if (db.GetItemById(id) != null)
-                    db.UpdateItem(item);
+                    db.UpdateItem(item.ReverseMap());
                 else
-                    db.InsertNewItem(item);
+                    throw new HttpResponseException(HttpStatusCode.NotFound);
             }
         }
 
@@ -56,7 +59,10 @@ namespace WarehouseWebAPI.Controllers
         {
             using (WarehouseConnection db = new WarehouseConnection())
             {
-                db.DeleteItem(id);
+                if(db.GetItemById(id)!=null)
+                    db.DeleteItem(id);
+                else
+                    throw new HttpResponseException(HttpStatusCode.NotFound);
             }
         }
     }
