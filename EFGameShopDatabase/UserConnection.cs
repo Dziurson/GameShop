@@ -10,7 +10,7 @@ namespace EFGameShopDatabase
     public class UserConnection : IDisposable
     {
         private GameShopDatabase MSSQLdb;
-        private static readonly ILog log = LogManager.GetLogger(typeof(WarehouseConnection));
+        private static readonly ILog log = LogManager.GetLogger(typeof(UserConnection));
 
         public UserConnection()
         {
@@ -26,7 +26,7 @@ namespace EFGameShopDatabase
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            MSSQLdb.Dispose();
         }
     }
 }

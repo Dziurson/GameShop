@@ -66,9 +66,10 @@ namespace EFGameShopDatabase
                 log.Info("Database Items extraction completed".WithDate());
                 return result;
             }
-            catch
+            catch(Exception e)
             {
                 log.Error("Database Items extraction failed".WithDate());
+                log.Error(e.Message);
                 return null;
             }            
         }
@@ -82,9 +83,10 @@ namespace EFGameShopDatabase
                 log.Info(String.Concat("Database Items with type: ", typestr, " extraction completed").WithDate());
                 return result;
             }
-            catch
+            catch (Exception e)
             {
                 log.Error(String.Concat("Database Items with type: ", typestr, " extraction failed").WithDate());
+                log.Error(e.Message);
                 return null;
             }
         } 
@@ -97,9 +99,10 @@ namespace EFGameShopDatabase
                 log.Info(String.Concat("Database Item with type: ", id, " extraction completed").WithDate());
                 return result;
             }
-            catch
+            catch (Exception e)
             {
                 log.Error(String.Concat("Database Item with type: ", id, " extraction failed").WithDate());
+                log.Error(e.Message);
                 return null;
             }
         }
@@ -112,9 +115,10 @@ namespace EFGameShopDatabase
                 log.Info("Database Items with 0 quantity extraction completed".WithDate());
                 return result;
             }
-            catch
+            catch (Exception e)
             {
                 log.Error("Database Items with 0 quantity extraction failed".WithDate());
+                log.Error(e.Message);
                 return null;
             }
         }
@@ -125,10 +129,7 @@ namespace EFGameShopDatabase
         }
         public bool InsertNewItems(IEnumerable<Item> items)
         {
-            foreach(Item item in items)
-            {
-                MSSQLdb.Items.Add(item.ReverseMap());
-            }
+            MSSQLdb.Items.AddRange(items.Select(item => item.ReverseMap()));            
             return Commit();
         }
         public void Dispose()
