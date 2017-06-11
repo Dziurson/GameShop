@@ -131,6 +131,15 @@ namespace EFGameShopDatabase
             }
             return Commit();
         }
+
+        public bool DeleteItem(int id)
+        {
+            Item item = GetItemById(id);
+            if ( item != null)
+                MSSQLdb.Items.Remove(item.ReverseMap());
+            return Commit();
+        }
+
         public void Dispose()
         {
             MSSQLdb.Dispose();
