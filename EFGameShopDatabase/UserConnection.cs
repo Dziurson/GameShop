@@ -26,6 +26,22 @@ namespace EFGameShopDatabase
             }
         }
 
+        private bool Commit()
+        {
+            try
+            {
+                log.Info("Saving changes to database - started".WithDate());
+                MSSQLdb.SaveChanges();
+                log.Info("Saving changes to database - completed".WithDate());
+                return true;
+            }
+            catch (Exception e)
+            {
+                log.Error("Saving changes to database - failed".WithDate());
+                return false;
+            }
+        }
+
         public void Dispose()
         {
             MSSQLdb.Dispose();
@@ -97,8 +113,45 @@ namespace EFGameShopDatabase
                 log.Error(e.Message);
                 return null;
             }
+        }   
+        
+        public bool InsertNewUser(User user)
+        {
+            MSSQLdb.Users.Add(user.ReverseMap());
+            return Commit();
         }
 
-        
+        public bool InsertNewUsers(IEnumerable<User> users)
+        {
+            MSSQLdb.Users.AddRange(users.Select(user => user.ReverseMap()));
+            return Commit();
+        }
+
+        public bool RemoveUser(User user)
+        {
+            log.Info(String.Concat("Database User with id: ", user.UserId, " removing started").WithDate());
+            if (GetUserById(user.UserId) != null)
+            {
+                try
+                {
+                    MSSQLdb.Users.Remove(MSSQLdb.Users.Where(u => u.UserId == user.UserId).FirstOrDefault());
+                }
+                catch (Exception e)
+                {
+                    log.Error(e.Message);
+                    return false;
+                }
+                bool result = Commit();
+                if(result == true)
+                {
+                    log.Info(String.Concat("Database User with id: ", user.UserId, " removing completed").WithDate());
+                    return result;
+                }
+                else
+                    log.Info(String.Concat("Database User with id: ", user.UserId, " removing failed").WithDate());
+            }
+            log.Info(String.Concat("Database User with id: ", user.UserId, " does not exist").WithDate());
+            return false;
+        }
     }
 }

@@ -62,9 +62,16 @@ namespace WCFGameShopWarehouseService
             {
                 // jak ma dzialac jak update, to trzeba zmodyfikowac
                 //var itemDb = item.ReverseMap();
-                //db.Items.Add(itemDb);
-                //return db.SaveChanges() > 0;
-                return false;
+                return db.InsertNewItem(item);
+                //return db.SaveChanges() > 0;                
+            }
+        }
+        public bool RemoveItem(Item item)
+        {
+            using (WarehouseConnection db = new WarehouseConnection())
+            {
+                log.Info(String.Concat("Remove Item with id: ", item.ItemId, " requested").WithDate());
+                return db.RemoveItem(item);              
             }
         }
     }

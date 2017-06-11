@@ -25,6 +25,9 @@ namespace WCFGameShopWarehouseService
         bool InsertNewItem(Item item);
 
         [OperationContract]
-        Item GetItemById(int itemid);        
+        Item GetItemById(int itemid);
+
+        [OperationContract]
+        bool RemoveItem(Item item);
     }
 }

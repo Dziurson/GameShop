@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using log4net;
 using EFGameShopDatabase.Extensions;
 using EFGameShopDatabase.Enums;
+using System.Data.Entity;
 
 namespace EFGameShopDatabase
 {
@@ -131,6 +132,34 @@ namespace EFGameShopDatabase
         {
             MSSQLdb.Items.AddRange(items.Select(item => item.ReverseMap()));            
             return Commit();
+        }
+        public bool RemoveItem(Item item)
+        {
+            log.Info(String.Concat("Database Item with id: ", item.ItemId, " removing started").WithDate());
+            if (GetItemById(item.ItemId) != null)
+            {
+                try
+                {
+                    MSSQLdb.Items.Remove(MSSQLdb.Items.Where(i => i.ItemId == item.ItemId).FirstOrDefault());
+                }
+                catch(Exception e)
+                {
+                    log.Error(e.Message);
+                    return false;
+                }
+                bool result = Commit();
+                if (result == true)
+                {
+                    log.Info(String.Concat("Database Item with id: ", item.ItemId, " removing completed").WithDate());
+                    return result;
+                }
+                else
+                {
+                    log.Info(String.Concat("Database Item with id: ", item.ItemId, " removing failed").WithDate());
+                }
+            }
+            log.Info(String.Concat("Database Item with id: ", item.ItemId, " does not exist").WithDate());
+            return false;
         }
         public void Dispose()
         {

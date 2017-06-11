@@ -236,6 +236,12 @@ namespace WCFGameShopWarehouseServiceTest.GameShopWarehouseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/GetItemById", ReplyAction="http://tempuri.org/IGameShopWarehouse/GetItemByIdResponse")]
         System.Threading.Tasks.Task<WCFGameShopWarehouseServiceTest.GameShopWarehouseService.Item> GetItemByIdAsync(int itemid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/RemoveItem", ReplyAction="http://tempuri.org/IGameShopWarehouse/RemoveItemResponse")]
+        bool RemoveItem(WCFGameShopWarehouseServiceTest.GameShopWarehouseService.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/RemoveItem", ReplyAction="http://tempuri.org/IGameShopWarehouse/RemoveItemResponse")]
+        System.Threading.Tasks.Task<bool> RemoveItemAsync(WCFGameShopWarehouseServiceTest.GameShopWarehouseService.Item item);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -303,6 +309,14 @@ namespace WCFGameShopWarehouseServiceTest.GameShopWarehouseService {
         
         public System.Threading.Tasks.Task<WCFGameShopWarehouseServiceTest.GameShopWarehouseService.Item> GetItemByIdAsync(int itemid) {
             return base.Channel.GetItemByIdAsync(itemid);
+        }
+        
+        public bool RemoveItem(WCFGameShopWarehouseServiceTest.GameShopWarehouseService.Item item) {
+            return base.Channel.RemoveItem(item);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveItemAsync(WCFGameShopWarehouseServiceTest.GameShopWarehouseService.Item item) {
+            return base.Channel.RemoveItemAsync(item);
         }
     }
 }

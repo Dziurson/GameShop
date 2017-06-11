@@ -58,5 +58,16 @@ namespace GameShopWarehouseServiceTest
                 Assert.AreEqual(10, items.Length);
             }
         }
+
+        [TestMethod]
+        public void RemoveAndInsertItemTest()
+        {
+            using (GameShopWarehouseClient client = new GameShopWarehouseClient())
+            {
+                Item item = client.GetItemById(10);
+                Assert.IsTrue(client.RemoveItem(item));
+                Assert.IsTrue(client.InsertNewItem(item));
+            }
+        }
     }
 }
