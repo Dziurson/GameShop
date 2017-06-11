@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -49,15 +52,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ItemType.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="GameShopDatabase.cs" />
-    <Compile Include="Entities\Items.cs" />
-    <Compile Include="Entities\OrderEntries.cs" />
-    <Compile Include="Entities\Orders.cs" />
+    <Compile Include="Entities\ItemDb.cs" />
+    <Compile Include="Entities\OrderEntryDb.cs" />
+    <Compile Include="Entities\OrderDb.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderEntry.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="OrderConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\Users.cs" />
+    <Compile Include="Entities\UserDb.cs" />
+    <Compile Include="UserConnection.cs" />
+    <Compile Include="WarehouseConnection.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

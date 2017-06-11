@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFGameShopWarehouseService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFGameShopDatabase", "EFGameShopDatabase\EFGameShopDatabase.csproj", "{2DD3CC75-75B4-4384-AABA-2AEFC7022AE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFGameShopWarehouseServiceTest", "UnitTestProject1\WCFGameShopWarehouseServiceTest.csproj", "{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2DD3CC75-75B4-4384-AABA-2AEFC7022AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DD3CC75-75B4-4384-AABA-2AEFC7022AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DD3CC75-75B4-4384-AABA-2AEFC7022AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

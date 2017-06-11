@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WCFGameShopWarehouseService
-{
-    class Service
+{   
+    public class Service
     {
         static void Main(string[] args)
         {
@@ -18,8 +18,10 @@ namespace WCFGameShopWarehouseService
             try
             {
                 selfHost.AddServiceEndpoint(typeof(IGameShopWarehouse), new WSHttpBinding(), "GameShopWarehouseServiceEndpoint");
-                ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-                smb.HttpGetEnabled = true;
+                ServiceMetadataBehavior smb = new ServiceMetadataBehavior()
+                {
+                    HttpGetEnabled = true
+                };
                 selfHost.Description.Behaviors.Add(smb);
                 selfHost.Open();
                 Console.WriteLine("GameShopWarehouseService is working. Press any key to stop service.");
