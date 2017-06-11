@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFGameShopWarehouseService", "WCFGameShopWarehouseService\WCFGameShopWarehouseService.csproj", "{5F5A0EE6-A5EE-407F-9C21-0537C562E321}"
 EndProject
@@ -9,7 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFGameShopDatabase", "EFGam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseWebAPI", "WarehouseWebAPI\WarehouseWebAPI.csproj", "{E6AE59A6-752C-4B27-9A31-1A4F06968F6D}"
 EndProject
+<<<<<<< HEAD
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFGameShopWarehouseServiceTest", "WCFGameShopWarehouseServiceTest\WCFGameShopWarehouseServiceTest.csproj", "{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}"
+=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFGameShopWarehouseServiceTest", "UnitTestProject1\WCFGameShopWarehouseServiceTest.csproj", "{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}"
+>>>>>>> 4f9981227a958dc21d06f11773442cc6ff24eb13
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
