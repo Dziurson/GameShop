@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using log4net;
 using EFGameShopDatabase.Extensions;
 using EFGameShopDatabase.Enums;
+using System.Data.Entity;
 
 namespace EFGameShopDatabase
 {
@@ -66,9 +67,10 @@ namespace EFGameShopDatabase
                 log.Info("Database Items extraction completed".WithDate());
                 return result;
             }
-            catch
+            catch(Exception e)
             {
                 log.Error("Database Items extraction failed".WithDate());
+                log.Error(e.Message);
                 return null;
             }            
         }
@@ -82,12 +84,29 @@ namespace EFGameShopDatabase
                 log.Info(String.Concat("Database Items with type: ", typestr, " extraction completed").WithDate());
                 return result;
             }
-            catch
+            catch (Exception e)
             {
                 log.Error(String.Concat("Database Items with type: ", typestr, " extraction failed").WithDate());
+                log.Error(e.Message);
                 return null;
             }
         } 
+        public IEnumerable<Item> GetItemsInOrder(Order order)
+        {
+            try
+            {
+                log.Info(String.Concat("Database Items with Order id: ", order.OrderId, " extraction started").WithDate());
+                IEnumerable<Item> result = MSSQLdb.OrderEntries.Where(orderentry => orderentry.OrderId == order.OrderId).Select(o => o.Items).ToList().Select(i => i.Map());
+                log.Info(String.Concat("Database Items with Order id: ", order.OrderId, " extraction completed").WithDate());
+                return result;
+            }
+            catch (Exception e)
+            {
+                log.Error(String.Concat("Database Items with Order id: ", order.OrderId, " extraction failed").WithDate());
+                log.Error(e.Message);
+                return null;
+            }
+        }
         public Item GetItemById(int id)
         {
             try
@@ -97,9 +116,10 @@ namespace EFGameShopDatabase
                 log.Info(String.Concat("Database Item with type: ", id, " extraction completed").WithDate());
                 return result;
             }
-            catch
+            catch (Exception e)
             {
                 log.Error(String.Concat("Database Item with type: ", id, " extraction failed").WithDate());
+                log.Error(e.Message);
                 return null;
             }
         }
@@ -112,9 +132,10 @@ namespace EFGameShopDatabase
                 log.Info("Database Items with 0 quantity extraction completed".WithDate());
                 return result;
             }
-            catch
+            catch (Exception e)
             {
                 log.Error("Database Items with 0 quantity extraction failed".WithDate());
+                log.Error(e.Message);
                 return null;
             }
         }
@@ -125,11 +146,36 @@ namespace EFGameShopDatabase
         }
         public bool InsertNewItems(IEnumerable<Item> items)
         {
-            foreach(Item item in items)
-            {
-                MSSQLdb.Items.Add(item.ReverseMap());
-            }
+            MSSQLdb.Items.AddRange(items.Select(item => item.ReverseMap()));            
             return Commit();
+        }
+        public bool RemoveItem(Item item)
+        {
+            log.Info(String.Concat("Database Item with id: ", item.ItemId, " removing started").WithDate());
+            if (GetItemById(item.ItemId) != null)
+            {
+                try
+                {
+                    MSSQLdb.Items.Remove(MSSQLdb.Items.Where(i => i.ItemId == item.ItemId).FirstOrDefault());
+                }
+                catch(Exception e)
+                {
+                    log.Error(e.Message);
+                    return false;
+                }
+                bool result = Commit();
+                if (result == true)
+                {
+                    log.Info(String.Concat("Database Item with id: ", item.ItemId, " removing completed").WithDate());
+                    return result;
+                }
+                else
+                {
+                    log.Info(String.Concat("Database Item with id: ", item.ItemId, " removing failed").WithDate());
+                }
+            }
+            log.Info(String.Concat("Database Item with id: ", item.ItemId, " does not exist").WithDate());
+            return false;
         }
 
         public bool UpdateItem(Item item)

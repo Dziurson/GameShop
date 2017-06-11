@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WCFGameShopWarehouseService.Extensions
 {
-    public static class StringExtensions
+    public static class Extensions
     {
         public static string WithDate(this string value)
         {

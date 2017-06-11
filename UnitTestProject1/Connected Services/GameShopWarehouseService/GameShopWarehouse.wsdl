@@ -286,6 +286,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IGameShopWarehouse_RemoveItem_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IGameShopWarehouse_RemoveItem_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -324,6 +362,12 @@
   <wsdl:message name="IGameShopWarehouse_GetItemById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetItemByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameShopWarehouse_RemoveItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveItem" />
+  </wsdl:message>
+  <wsdl:message name="IGameShopWarehouse_RemoveItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveItemResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGameShopWarehouse">
     <wsdl:operation name="GetAllItems">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameShopWarehouse/GetAllItems" message="tns:IGameShopWarehouse_GetAllItems_InputMessage" />
@@ -344,6 +388,10 @@
     <wsdl:operation name="GetItemById">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameShopWarehouse/GetItemById" message="tns:IGameShopWarehouse_GetItemById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGameShopWarehouse/GetItemByIdResponse" message="tns:IGameShopWarehouse_GetItemById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameShopWarehouse/RemoveItem" message="tns:IGameShopWarehouse_RemoveItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameShopWarehouse/RemoveItemResponse" message="tns:IGameShopWarehouse_RemoveItem_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IGameShopWarehouse" type="tns:IGameShopWarehouse">
@@ -401,6 +449,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_IGameShopWarehouse_GetItemById_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveItem">
+      <soap12:operation soapAction="http://tempuri.org/IGameShopWarehouse/RemoveItem" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IGameShopWarehouse_RemoveItem_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IGameShopWarehouse_RemoveItem_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
