@@ -17,7 +17,7 @@ namespace EFGameShopDatabase.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("item_id")]
         public int ItemId { get; set; }
 

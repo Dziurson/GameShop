@@ -31,26 +31,46 @@ namespace WarehouseWebAPI.Controllers
         }
 
         // POST: api/Items
-        public void Post(Item item)
+        public HttpResponseMessage Post(Item item)
         {
-            if (item!=null)
-            using (WarehouseConnection db = new WarehouseConnection())
-            {                
-                db.InsertNewItem(item.ReverseMap());
+            if (item != null)
+            { 
+                using (WarehouseConnection db = new WarehouseConnection())
+                {
+                    db.InsertNewItem(item.ReverseMap());
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, item);
+                    return response;
+                }
             }
+            else
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
 
         }
 
         // PUT: api/Items/5
-        public void Put(int id, Item item)
+        public HttpResponseMessage Put(int id, [FromBody]Item item)
         {
             if (item!=null)
             using (WarehouseConnection db = new WarehouseConnection())
             {
-                if (db.GetItemById(id) != null)
-                    db.UpdateItem(item.ReverseMap());
-                else
-                    throw new HttpResponseException(HttpStatusCode.NotFound);
+                    if (db.GetItemById(id) != null)
+                    {
+                        db.UpdateItem(item.ReverseMap());
+                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, item);
+                        return response;
+                    }
+                    else
+                    {
+                        throw new HttpResponseException(HttpStatusCode.NotFound);
+                    }
+            }
+            else
+            {
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+                return response;
             }
         }
 
