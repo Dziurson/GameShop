@@ -58,10 +58,25 @@
     <None Include="Connected Services\GameShopWarehouseService\GameShopWarehouseService.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\GameShopWarehouseService\GameShopWarehouseService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GameShopWarehouseService\GameShopWarehouseService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GameShopWarehouseService\GameShopWarehouseService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\DataSources\EFGameShopDatabase.Models.Item.datasource" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EFGameShopDatabase\EFGameShopDatabase.csproj">
+      <Project>{2DD3CC75-75B4-4384-AABA-2AEFC7022AE3}</Project>
+      <Name>EFGameShopDatabase</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\GameShopWarehouseService\" />
@@ -76,22 +91,10 @@
     <None Include="Connected Services\GameShopWarehouseService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\GameShopWarehouseService\GameShopWarehouseService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\GameShopWarehouseService\GameShopWarehouseService11.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\GameShopWarehouseService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EFGameShopDatabase\EFGameShopDatabase.csproj">
-      <Project>{2DD3CC75-75B4-4384-AABA-2AEFC7022AE3}</Project>
-      <Name>EFGameShopDatabase</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

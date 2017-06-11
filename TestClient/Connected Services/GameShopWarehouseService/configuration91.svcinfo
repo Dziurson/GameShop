@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="TbbIXeRQZm8Qfk6c4jeDgFFVk/g=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="lcZooQ6nFUQ8nyv7jMSKalmSA8s=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IGameShopWarehouse">
+    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IGameShopWarehouse1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IGameShopWarehouse</serializedValue>
+          <serializedValue>WSHttpBinding_IGameShopWarehouse1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -127,7 +127,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_IGameShopWarehouse" contract="GameShopWarehouseService.IGameShopWarehouse" bindingType="wsHttpBinding" address="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService/GameShopWarehouseServiceEndpoint" bindingConfiguration="WSHttpBinding_IGameShopWarehouse">
+    <endpoint name="WSHttpBinding_IGameShopWarehouse" contract="GameShopWarehouseService.IGameShopWarehouse" bindingType="wsHttpBinding" address="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService/GameShopWarehouseServiceEndpoint" bindingConfiguration="WSHttpBinding_IGameShopWarehouse1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService/GameShopWarehouseServiceEndpoint</serializedValue>
@@ -139,7 +139,7 @@
           <serializedValue>wsHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IGameShopWarehouse</serializedValue>
+          <serializedValue>WSHttpBinding_IGameShopWarehouse1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>GameShopWarehouseService.IGameShopWarehouse</serializedValue>

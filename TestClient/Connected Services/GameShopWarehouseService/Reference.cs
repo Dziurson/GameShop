@@ -20,6 +20,30 @@ namespace TestClient.GameShopWarehouseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/GetAllItems", ReplyAction="http://tempuri.org/IGameShopWarehouse/GetAllItemsResponse")]
         System.Threading.Tasks.Task<EFGameShopDatabase.Models.Item[]> GetAllItemsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/GetItemsByType", ReplyAction="http://tempuri.org/IGameShopWarehouse/GetItemsByTypeResponse")]
+        EFGameShopDatabase.Models.Item[] GetItemsByType(EFGameShopDatabase.Enums.ItemType itemtype);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/GetItemsByType", ReplyAction="http://tempuri.org/IGameShopWarehouse/GetItemsByTypeResponse")]
+        System.Threading.Tasks.Task<EFGameShopDatabase.Models.Item[]> GetItemsByTypeAsync(EFGameShopDatabase.Enums.ItemType itemtype);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/GetItemsWithNoQty", ReplyAction="http://tempuri.org/IGameShopWarehouse/GetItemsWithNoQtyResponse")]
+        EFGameShopDatabase.Models.Item[] GetItemsWithNoQty();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/GetItemsWithNoQty", ReplyAction="http://tempuri.org/IGameShopWarehouse/GetItemsWithNoQtyResponse")]
+        System.Threading.Tasks.Task<EFGameShopDatabase.Models.Item[]> GetItemsWithNoQtyAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/InsertNewItem", ReplyAction="http://tempuri.org/IGameShopWarehouse/InsertNewItemResponse")]
+        bool InsertNewItem(EFGameShopDatabase.Models.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/InsertNewItem", ReplyAction="http://tempuri.org/IGameShopWarehouse/InsertNewItemResponse")]
+        System.Threading.Tasks.Task<bool> InsertNewItemAsync(EFGameShopDatabase.Models.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/GetItemById", ReplyAction="http://tempuri.org/IGameShopWarehouse/GetItemByIdResponse")]
+        EFGameShopDatabase.Models.Item GetItemById(int itemid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameShopWarehouse/GetItemById", ReplyAction="http://tempuri.org/IGameShopWarehouse/GetItemByIdResponse")]
+        System.Threading.Tasks.Task<EFGameShopDatabase.Models.Item> GetItemByIdAsync(int itemid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +79,38 @@ namespace TestClient.GameShopWarehouseService {
         
         public System.Threading.Tasks.Task<EFGameShopDatabase.Models.Item[]> GetAllItemsAsync() {
             return base.Channel.GetAllItemsAsync();
+        }
+        
+        public EFGameShopDatabase.Models.Item[] GetItemsByType(EFGameShopDatabase.Enums.ItemType itemtype) {
+            return base.Channel.GetItemsByType(itemtype);
+        }
+        
+        public System.Threading.Tasks.Task<EFGameShopDatabase.Models.Item[]> GetItemsByTypeAsync(EFGameShopDatabase.Enums.ItemType itemtype) {
+            return base.Channel.GetItemsByTypeAsync(itemtype);
+        }
+        
+        public EFGameShopDatabase.Models.Item[] GetItemsWithNoQty() {
+            return base.Channel.GetItemsWithNoQty();
+        }
+        
+        public System.Threading.Tasks.Task<EFGameShopDatabase.Models.Item[]> GetItemsWithNoQtyAsync() {
+            return base.Channel.GetItemsWithNoQtyAsync();
+        }
+        
+        public bool InsertNewItem(EFGameShopDatabase.Models.Item item) {
+            return base.Channel.InsertNewItem(item);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertNewItemAsync(EFGameShopDatabase.Models.Item item) {
+            return base.Channel.InsertNewItemAsync(item);
+        }
+        
+        public EFGameShopDatabase.Models.Item GetItemById(int itemid) {
+            return base.Channel.GetItemById(itemid);
+        }
+        
+        public System.Threading.Tasks.Task<EFGameShopDatabase.Models.Item> GetItemByIdAsync(int itemid) {
+            return base.Channel.GetItemByIdAsync(itemid);
         }
     }
 }

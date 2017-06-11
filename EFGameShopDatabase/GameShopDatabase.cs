@@ -10,8 +10,8 @@ namespace EFGameShopDatabase
 {
     public partial class GameShopDatabase : DbContext
     {
-        //public GameShopDatabase() : base("name=DbConnectionString")
-        public GameShopDatabase() : base("name=localdb")
+        public GameShopDatabase() : base("name=DbConnectionString")
+        //public GameShopDatabase() : base("name=localdb")
         {
         }
 

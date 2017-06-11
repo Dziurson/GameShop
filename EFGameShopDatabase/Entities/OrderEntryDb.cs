@@ -7,19 +7,20 @@ using System.Data.Entity.Spatial;
 
 namespace EFGameShopDatabase.Entities
 {
-    [Table("OrderEntries")]
+    [Table("OrderEntries", Schema = "dbo")]
     public partial class OrderEntryDb
     {
         [Key]
-        [Column(Order = 0)]
+        [Column("order_id", Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int OrderId { get; set; }
 
         [Key]
-        [Column(Order = 1)]
+        [Column("item_id", Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ItemId { get; set; }
 
+        [Column("quantity")]
         public int? Quantity { get; set; }
 
         public virtual ItemDb Items { get; set; }

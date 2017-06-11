@@ -16,55 +16,55 @@ namespace WCFGameShopWarehouseService
     
     public class GameShopWarehouse : IGameShopWarehouse
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(GameShopWarehouse));
+        private static readonly ILog log = LogManager.GetLogger(typeof(GameShopWarehouse));        
 
         GameShopWarehouse()
-        {
+        {            
             log4net.Config.XmlConfigurator.Configure();
         }
+
         public IEnumerable<Item> GetAllItems() 
         {
-            log.Info("All items requested".WithDate());
-            using(var db = new GameShopDatabase())
+            using (WarehouseConnection db = new WarehouseConnection())
             {
-                return db.Items.ToList().Select(x => x.Map());
+                log.Info("All items requested".WithDate());
+                return db.GetAllItems();
             }
         }
-
         public Item GetItemById(int itemId)
-        {
-            log.Info("Item requested".WithDate());
-            using (var db = new GameShopDatabase())
+        {            
+            using (WarehouseConnection db = new WarehouseConnection())
             {
-                var item = db.Items.Where(x => x.ItemId == itemId).FirstOrDefault();
-                return item == null ? item.Map() : null;
+                log.Info(String.Concat("Item with id: ", itemId, " requested").WithDate());
+                return db.GetItemById(itemId);                
             }
         }
-
         public IEnumerable<Item> GetItemsByType(ItemType itemType)
-        {
-            log.Info("Items by type requested".WithDate());
-            using (var db = new GameShopDatabase())
+        {            
+            using (WarehouseConnection db = new WarehouseConnection())
             {
-                var typeStr = itemType.ToString();
-                return db.Items.Where(x => x.Type == typeStr).ToList().Select(x => x.Map());
+                log.Info(String.Concat("Items by type: ", itemType.ToString(), " requested. ").WithDate());
+                return db.GetItemByType(itemType);
             }
         }
-
         public IEnumerable<Item> GetItemsWithNoQty()
         {
-            throw new NotImplementedException();
+            using (WarehouseConnection db = new WarehouseConnection())
+            {
+                log.Info(String.Concat("Items with 0 quantity requested.").WithDate());
+                return db.GetItemsWithNoQty();
+            }
         }
-
         public bool InsertNewItem(Item item)
         {
             log.Info("Item insertion requested".WithDate());
-            using (var db = new GameShopDatabase())
+            using (WarehouseConnection db = new WarehouseConnection())
             {
                 // jak ma dzialac jak update, to trzeba zmodyfikowac
-                var itemDb = item.ReverseMap();
-                db.Items.Add(itemDb);
-                return db.SaveChanges() > 0;
+                //var itemDb = item.ReverseMap();
+                //db.Items.Add(itemDb);
+                //return db.SaveChanges() > 0;
+                return false;
             }
         }
     }

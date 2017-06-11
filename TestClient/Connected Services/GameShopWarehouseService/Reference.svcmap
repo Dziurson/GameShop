@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7ef49eca-22b9-43f3-8b2c-4afa723b6345" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ea9af18-24a3-4966-8c6c-a217514370f5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,12 @@
     <MetadataSource Address="http://localhost:80/Temporary_Listen_Addresses/GameShopWarehouseService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GameShopWarehouseService1.xsd" MetadataType="Schema" ID="206dc76d-cb5a-465d-8c75-4044323acec2" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?xsd=xsd1" />
-    <MetadataFile FileName="GameShopWarehouseService.disco" MetadataType="Disco" ID="540e21d1-719c-415a-bcfc-ab64b9534007" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?disco" />
-    <MetadataFile FileName="GameShopWarehouseService.xsd" MetadataType="Schema" ID="b7e7555c-3206-4b84-8f7b-e5d36cc0f7eb" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?xsd=xsd0" />
-    <MetadataFile FileName="GameShopWarehouse.wsdl" MetadataType="Wsdl" ID="d59af32f-86d2-4375-96d1-9af9d700567d" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?wsdl" />
-    <MetadataFile FileName="GameShopWarehouseService11.xsd" MetadataType="Schema" ID="80a7d4fe-ff78-41ea-a5e5-7e2a5030af18" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?xsd=xsd2" />
+    <MetadataFile FileName="GameShopWarehouseService.disco" MetadataType="Disco" ID="9d6f6173-9d46-49df-9efb-27368d3b129a" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?disco" />
+    <MetadataFile FileName="GameShopWarehouse.wsdl" MetadataType="Wsdl" ID="b6941a62-9048-4aba-b9e0-4622a4932c67" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?wsdl" />
+    <MetadataFile FileName="GameShopWarehouseService.xsd" MetadataType="Schema" ID="cf1f8e94-f46c-4605-8039-6b2a6043183c" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?xsd=xsd3" />
+    <MetadataFile FileName="GameShopWarehouseService1.xsd" MetadataType="Schema" ID="d917a1db-9d20-4463-8f30-b5734906aa02" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?xsd=xsd2" />
+    <MetadataFile FileName="GameShopWarehouseService2.xsd" MetadataType="Schema" ID="6dd2b7ad-49b0-4055-ab4b-25f6bbb0c83a" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?xsd=xsd1" />
+    <MetadataFile FileName="GameShopWarehouseService3.xsd" MetadataType="Schema" ID="e734b19c-127e-465b-ba0f-81e6f2905b53" SourceId="1" SourceUrl="http://localhost/Temporary_Listen_Addresses/GameShopWarehouseService?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -10,12 +10,12 @@ using EFGameShopDatabase.Enums;
 
 namespace EFGameShopDatabase
 {
-    public class MSSQLDatabase
+    public class WarehouseConnection : IDisposable
     {
         private GameShopDatabase MSSQLdb;
-        private static readonly ILog log = LogManager.GetLogger(typeof(MSSQLDatabase));
+        private static readonly ILog log = LogManager.GetLogger(typeof(WarehouseConnection));
 
-        public MSSQLDatabase()
+        public WarehouseConnection()
         {            
             try
             {
@@ -41,7 +41,6 @@ namespace EFGameShopDatabase
                 return null;
             }            
         }
-
         public IEnumerable<Item> GetItemByType(ItemType itemtype)
         {            
             try
@@ -57,13 +56,39 @@ namespace EFGameShopDatabase
                 return null;
             }
         } 
-        
+        public Item GetItemById(int id)
+        {
+            try
+            {
+                Item result = MSSQLdb.Items.Where(item => item.ItemId == id).ToList().Select(item => item.Map()).FirstOrDefault();
+                log.Info(DateTime.Now + "Database Item extraction completed.");
+                return result;
+            }
+            catch
+            {
+                log.Error("Database Item extraction failed.");
+                return null;
+            }
+        }
+        public IEnumerable<Item> GetItemsWithNoQty()
+        {
+            try
+            {
+                IEnumerable<Item> result = MSSQLdb.Items.Where(item => item.AvailableQuantity == 0).ToList().Select(item => item.Map());
+                log.Info(DateTime.Now + "Database Items extraction completed.");
+                return result;
+            }
+            catch
+            {
+                log.Error("Database Items extraction failed.");
+                return null;
+            }
+        }
         public bool InsertNewItem(Item item)
         {
             MSSQLdb.Items.Add(item.ReverseMap());
             return Commit();
         }
-
         public bool InsertNewItems(IEnumerable<Item> items)
         {
             foreach(Item item in items)
@@ -72,7 +97,6 @@ namespace EFGameShopDatabase
             }
             return Commit();
         }
-
         private bool Commit()
         {
             try
@@ -86,6 +110,9 @@ namespace EFGameShopDatabase
                 return false;
             }
         }
-
+        public void Dispose()
+        {
+            MSSQLdb.Dispose();
+        }
     }
 }
