@@ -117,8 +117,16 @@ namespace EFGameShopDatabase
         
         public bool InsertNewUser(User user)
         {
-            MSSQLdb.Users.Add(user.ReverseMap());
-            return Commit();
+            try
+            {
+                MSSQLdb.Users.Add(user.ReverseMap());
+                return Commit();
+            }
+            catch(Exception e)
+            {
+                log.Error(e.Message);
+                return false;
+            }
         }
 
         public bool InsertNewUsers(IEnumerable<User> users)

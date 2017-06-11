@@ -50,6 +50,8 @@ namespace EFGameShopDatabase
             catch (Exception e)
             {
                 log.Error("Saving changes to database - failed".WithDate());
+                log.Error(e.Message);
+                log.Error(e.InnerException.Message);
                 return false;
             }
         }
@@ -141,8 +143,16 @@ namespace EFGameShopDatabase
         }
         public bool InsertNewItem(Item item)
         {
-            MSSQLdb.Items.Add(item.ReverseMap());
-            return Commit();
+            try
+            { 
+                MSSQLdb.Items.Add(item.ReverseMap());
+                return Commit();
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                return false;
+            }
         }
         public bool InsertNewItems(IEnumerable<Item> items)
         {

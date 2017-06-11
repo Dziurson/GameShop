@@ -18,7 +18,7 @@ namespace WCFGameShopWarehouseService
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(GameShopWarehouse));        
 
-        GameShopWarehouse()
+        public GameShopWarehouse()
         {            
             log4net.Config.XmlConfigurator.Configure();
         }

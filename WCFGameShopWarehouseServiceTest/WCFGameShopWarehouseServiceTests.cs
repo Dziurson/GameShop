@@ -59,15 +59,15 @@ namespace GameShopWarehouseServiceTest
             }
         }
 
-        //[TestMethod]
-        //public void RemoveAndInsertItemTest()
-        //{
-        //    using (GameShopWarehouseClient client = new GameShopWarehouseClient())
-        //    {
-        //        Item item = client.GetItemById(3);
-        //        Assert.IsTrue(client.RemoveItem(item));
-        //        Assert.IsTrue(client.InsertNewItem(item));
-        //    }
-        //}
+        [TestMethod]
+        public void RemoveAndInsertItemTest()
+        {
+            using (GameShopWarehouseClient client = new GameShopWarehouseClient())
+            {
+                Item item = client.GetItemById(8);
+                Assert.IsTrue(client.RemoveItem(item));
+                Assert.IsTrue(client.InsertNewItem(item));
+            }
+        }
     }
 }
