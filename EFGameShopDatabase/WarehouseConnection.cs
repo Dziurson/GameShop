@@ -91,6 +91,22 @@ namespace EFGameShopDatabase
                 return null;
             }
         } 
+        public IEnumerable<Item> GetItemsInOrder(Order order)
+        {
+            try
+            {
+                log.Info(String.Concat("Database Items with Order id: ", order.OrderId, " extraction started").WithDate());
+                IEnumerable<Item> result = MSSQLdb.OrderEntries.Where(orderentry => orderentry.OrderId == order.OrderId).Select(o => o.Items).ToList().Select(i => i.Map());
+                log.Info(String.Concat("Database Items with Order id: ", order.OrderId, " extraction completed").WithDate());
+                return result;
+            }
+            catch (Exception e)
+            {
+                log.Error(String.Concat("Database Items with Order id: ", order.OrderId, " extraction failed").WithDate());
+                log.Error(e.Message);
+                return null;
+            }
+        }
         public Item GetItemById(int id)
         {
             try

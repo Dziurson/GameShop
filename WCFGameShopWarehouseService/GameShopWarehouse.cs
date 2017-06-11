@@ -47,6 +47,14 @@ namespace WCFGameShopWarehouseService
                 return db.GetItemByType(itemType);
             }
         }
+        public IEnumerable<Item> GetItemsInOrder(Order order)
+        {
+            using (WarehouseConnection db = new WarehouseConnection())
+            {
+                log.Info(String.Concat("Items by Order id: ", order.OrderId, " requested. ").WithDate());
+                return db.GetItemsInOrder(order);
+            }
+        }
         public IEnumerable<Item> GetItemsWithNoQty()
         {
             using (WarehouseConnection db = new WarehouseConnection())
@@ -59,11 +67,16 @@ namespace WCFGameShopWarehouseService
         {
             log.Info("Item insertion requested".WithDate());
             using (WarehouseConnection db = new WarehouseConnection())
+            {                
+                return db.InsertNewItem(item);                              
+            }
+        }
+        public bool InsertNewItems(IEnumerable<Item> items)
+        {
+            log.Info("Items insertion requested".WithDate());
+            using (WarehouseConnection db = new WarehouseConnection())
             {
-                // jak ma dzialac jak update, to trzeba zmodyfikowac
-                //var itemDb = item.ReverseMap();
-                return db.InsertNewItem(item);
-                //return db.SaveChanges() > 0;                
+                return db.InsertNewItems(items);
             }
         }
         public bool RemoveItem(Item item)

@@ -113,7 +113,7 @@ namespace EFGameShopDatabase
                 log.Error(e.Message);
                 return null;
             }
-        }   
+        }          
         
         public bool InsertNewUser(User user)
         {

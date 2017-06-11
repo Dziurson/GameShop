@@ -25,9 +25,15 @@ namespace WCFGameShopWarehouseService
         bool InsertNewItem(Item item);
 
         [OperationContract]
+        bool InsertNewItems(IEnumerable<Item> items);
+
+        [OperationContract]
         Item GetItemById(int itemid);
 
         [OperationContract]
         bool RemoveItem(Item item);
+
+        [OperationContract]
+        IEnumerable<Item> GetItemsInOrder(Order order);
     }
 }
