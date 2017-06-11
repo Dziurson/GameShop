@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFGameShopWarehouseService", "WCFGameShopWarehouseService\WCFGameShopWarehouseService.csproj", "{5F5A0EE6-A5EE-407F-9C21-0537C562E321}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFGameShopDatabase", "EFGameShopDatabase\EFGameShopDatabase.csproj", "{2DD3CC75-75B4-4384-AABA-2AEFC7022AE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFGameShopWarehouseServiceTest", "UnitTestProject1\WCFGameShopWarehouseServiceTest.csproj", "{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseWebAPI", "WarehouseWebAPI\WarehouseWebAPI.csproj", "{E6AE59A6-752C-4B27-9A31-1A4F06968F6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC5AE5FE-7BF8-408E-9799-563E5FA415C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6AE59A6-752C-4B27-9A31-1A4F06968F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6AE59A6-752C-4B27-9A31-1A4F06968F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6AE59A6-752C-4B27-9A31-1A4F06968F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6AE59A6-752C-4B27-9A31-1A4F06968F6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
