@@ -132,11 +132,22 @@ namespace EFGameShopDatabase
             return Commit();
         }
 
+        public bool UpdateItem(Item item)
+        {
+            var res = GetItemById(item.ItemId);
+            res = item;
+            log.Info(String.Concat("Database Item with id: ", item.ItemId, " has been changed").WithDate());
+            return Commit();
+        }
+
         public bool DeleteItem(int id)
         {
             Item item = GetItemById(id);
-            if ( item != null)
+            if (item != null)
+            { 
                 MSSQLdb.Items.Remove(item.ReverseMap());
+                log.Info(String.Concat("Database Item with id: ", id, " has been deleted").WithDate());
+            }
             return Commit();
         }
 

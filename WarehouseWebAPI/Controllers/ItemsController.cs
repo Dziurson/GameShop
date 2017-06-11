@@ -44,13 +44,20 @@ namespace WarehouseWebAPI.Controllers
         {
             using (WarehouseConnection db = new WarehouseConnection())
             {
-                db.
+                if (db.GetItemById(id) != null)
+                    db.UpdateItem(item);
+                else
+                    db.InsertNewItem(item);
             }
         }
 
         // DELETE: api/Items/5
         public void Delete(int id)
         {
+            using (WarehouseConnection db = new WarehouseConnection())
+            {
+                db.DeleteItem(id);
+            }
         }
     }
 }
