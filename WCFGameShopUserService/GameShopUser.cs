@@ -20,7 +20,11 @@ namespace WCFGameShopUserService
 
         public User GetUserByCredentials(string login, string password)
         {
-            throw new NotImplementedException();
+            using (UserConnection db = new UserConnection())
+            {
+                log.Info(String.Concat("User with login: ", login, " requested").WithDate());
+                return db.GetUserByCredentials(login, password);
+            }
         }
 
         public User GetUserById(int id)
