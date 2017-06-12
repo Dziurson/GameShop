@@ -1,13 +1,10 @@
-﻿using EFGameShopDatabase.Models;
+﻿using EFGameShopDatabase.Enums;
+using EFGameShopDatabase.Extensions;
+using EFGameShopDatabase.Models;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using log4net;
-using EFGameShopDatabase.Extensions;
-using EFGameShopDatabase.Enums;
-using System.Data.Entity;
 
 namespace EFGameShopDatabase
 {
@@ -170,6 +167,7 @@ namespace EFGameShopDatabase
                 }
                 catch(Exception e)
                 {
+                    log.Error(String.Concat("Database Item with id: ", item.ItemId, " removing failed").WithDate());
                     log.Error(e.Message);
                     return false;
                 }
@@ -181,10 +179,10 @@ namespace EFGameShopDatabase
                 }
                 else
                 {
-                    log.Info(String.Concat("Database Item with id: ", item.ItemId, " removing failed").WithDate());
+                    log.Error(String.Concat("Database Item with id: ", item.ItemId, " removing failed").WithDate());
                 }
             }
-            log.Info(String.Concat("Database Item with id: ", item.ItemId, " does not exist").WithDate());
+            log.Warn(String.Concat("Database Item with id: ", item.ItemId, " does not exist").WithDate());
             return false;
         }
 

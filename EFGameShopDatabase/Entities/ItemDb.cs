@@ -1,9 +1,7 @@
-using System;
+using EFGameShopDatabase.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Spatial;
-using EFGameShopDatabase.Models;
 
 namespace EFGameShopDatabase.Entities
 {

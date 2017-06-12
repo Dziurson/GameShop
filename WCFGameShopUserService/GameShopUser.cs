@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EFGameShopDatabase.Models;
-using System.ServiceModel;
-using log4net;
-using EFGameShopDatabase;
+﻿using EFGameShopDatabase;
 using EFGameShopDatabase.Extensions;
+using EFGameShopDatabase.Models;
+using log4net;
+using System;
+using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace WCFGameShopUserService
 {

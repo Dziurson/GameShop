@@ -1,10 +1,5 @@
-using System;
-using System.Data.Entity;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using EFGameShopDatabase.Entities;
-using System.Collections.Generic;
-using EFGameShopDatabase.Models;
+using System.Data.Entity;
 
 namespace EFGameShopDatabase
 {
