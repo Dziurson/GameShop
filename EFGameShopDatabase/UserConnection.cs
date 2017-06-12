@@ -38,6 +38,7 @@ namespace EFGameShopDatabase
             catch (Exception e)
             {
                 log.Error("Saving changes to database - failed".WithDate());
+                log.Error(e.Message);
                 return false;
             }
         }
